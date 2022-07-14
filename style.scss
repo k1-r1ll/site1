@@ -1,0 +1,993 @@
+@import 'variables';
+
+// 0. Basic Section
+
+body {
+    font-family: $poppins;
+}
+
+.body_lock {
+    overflow: hidden;
+}
+
+.wrapper {
+    min-height: 100%;
+}
+
+.button {
+    padding: 10px 20px;
+    &__page {
+        text-decoration: none;
+        color: $black;
+        letter-spacing: 0.4 px;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+// 1. Header Section
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background-color: $white;
+    &__container {
+        max-width: 1200px;
+        margin: 0px auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 35px;
+        min-height: 90px;
+    }
+    &__logo {
+        display: block;
+        position: relative;
+        z-index: 5;
+    }
+    &__pic {
+        width: 100%;
+    }
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    &__list {
+        list-style-type: none;
+        padding-left: 0;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 24px;
+    }
+    &__item {
+        margin: 0 0 0 32px;
+    }
+    &__link {
+        text-decoration: none;
+        font-size: 15px;
+        color: $black;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    &__button {
+        font-size: 16px;
+        background-color: $black;
+        color: $white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 14px;
+        max-width: 155px;
+        z-index: 5;
+        @include breakpoint(sd) {
+            font-size: 12px;
+            padding: 5px 5px;
+        }
+    }
+    &__icon {
+        display: none;
+    }
+    @include breakpoint(md) {
+        &__list {
+            display: flex;
+            align-items: center;
+        }
+    }
+    @include breakpoint(sd) {
+        display: flex;
+        align-items: center;
+        &__icon {
+            z-index: 5;
+            display: block;
+            position: relative;
+            width: 30px;
+            height: 18px;
+            margin: 0 0 0 32px;
+            cursor: pointer;
+            &::before,
+            &_span,
+            &::after {
+                position: absolute;
+                left: 0;
+                width: 100%;
+                height: 10%;
+                transition: all 0.3s ease 0s;
+                background-color: $black;
+            }
+            &::before, &::after {
+                content: '';
+            }
+            &::before {
+                top: 0;
+            }
+            &::after {
+                bottom: 0;
+            }
+            &_span {
+                top: 50%;
+                transform: scale(1) translate(0px, -50%);
+            }
+            &_active span {
+                transform: scale(0) translate(0px, -50%);
+            }
+            &_active::before {
+                top: 50%;
+                transform: rotate(-45deg) translate(0px, -50%);
+            }
+            &_active::after {
+                top: 50%;
+                transform: rotate(45deg) translate(0px, -50%);
+            }
+        }
+        &__body {
+            position: fixed;
+            top: 0;
+            left: -200%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 100px 30px 30px 30px;
+            transition: left 0.3s ease 0s;
+            overflow: auto;
+            &::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 90px;
+                background-color: $white;
+                z-index: 2;
+            }
+            &_active {
+                left: 0;
+            }
+        }
+        &__item {
+            margin-bottom: 33px;
+            &:last-child {
+                margin-bottom: 0px;
+            }
+        }
+        &__link {
+            color: $white;
+            font-size: 24px;
+        }
+    }
+}
+
+// 2. Design Section
+
+.design {
+    background-color: $pink;
+    margin-top: 90px;
+    &__container {
+        max-width: 1350px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include breakpoint(sd) {
+            flex-direction: column;
+        }
+    }
+    &-item {
+        &__text {
+            padding: 20px 40px;
+            flex-basis: 38%;
+        }
+        &__picture {
+            flex-basis: 50%;
+        }
+        &__pic {
+            max-width: 100%;
+        }
+    }
+    &__title {
+        font-weight: 400;
+        font-size: 14px;
+        letter-spacing: 2px;
+        line-height: 20px;
+        color: $brown;
+        margin: 0px;
+        margin-bottom: 20px;
+        @include breakpoint(sd) {
+            text-align: center;
+        }
+    }
+    &__main-title {
+        font-weight: 400;
+        font-size: 64px;
+        line-height: 70.4px;
+        color: $black;
+        margin: 0px;
+        margin-bottom: 18px;
+        @include breakpoint(sd) {
+            text-align: center;
+            font-size: 24px;
+            line-height: 24px;
+        }
+    }
+    &__par {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: $dark-brown;
+        margin: 0px;
+        margin-bottom: 40px;
+        @include breakpoint(sd) {
+            font-size: 12px;
+            line-height: 24px;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+// 3. Firm Section
+
+.firm {
+    background-color: $white;
+    &__container {
+        margin: 0 auto;
+        max-width: 768px;
+    }
+    &__body {
+        display: flex;
+        padding-top: 96px;
+        padding-bottom: 96px;
+        @include breakpoint(sd) {
+            flex-direction: column;
+            padding: 20px 0px;
+        }
+    }
+    &__left {
+        flex-basis: 40%;
+        padding: 0px 0px 0px 20px;
+    }
+    &__right {
+        flex-basis: 60%;
+        padding: 0px 20px 0px 0px;
+        @include breakpoint(sd) {
+            text-align: justify;
+            padding: 0px 30px 0px 30px;
+        }
+    }
+    &__title {
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 38px;
+        color: $dark-brown;
+        margin-top: 0px;
+        text-align: center;
+        @include breakpoint(sd) {
+            font-size: 24px;
+        }
+    }
+    &__par {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: $dark-brown;
+        &:first-child {
+            margin-top: 5px;
+        }
+        @include breakpoint(sd) {
+            font-size: 12px;
+            line-height: 16px;
+        }
+    }
+    &__partner {
+        display: flex;
+        align-items: center;
+    }
+    &__pic {
+        margin-right: 30px;
+        @include breakpoint(sd) {
+            width: 60px;
+        }
+        &_cell {
+            @include breakpoint(sd) {
+                width: 40px;
+                margin-right: 5px;
+            }
+        }
+    }
+    &__name {
+        font-weight: 400;
+        font-size: 17px;
+        line-height: 26px;
+        color: $black;
+        &_cell {
+            @include breakpoint(sd) {
+                font-size: 12px;
+                line-height: 5px;
+            }
+        }
+    }
+    &__position {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 14px;
+        color: $brown;
+        &_cell {
+            @include breakpoint(sd) {
+                font-size: 10px;
+            }
+        }
+    }
+}
+
+
+// 4. House Section
+
+.house {
+    background-image: url(../img/house.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    @include breakpoint(sd) {
+        background-size: 100%;
+    }
+    &__container {
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        justify-content: flex-start;
+        padding-right: 50px;
+        @include breakpoint(sd) {
+            padding-right: 25px;
+        }
+    }
+    &__text {
+        max-width: 285px;
+        padding: 266px 0px;
+        @include breakpoint(sd) {
+            padding: 10px 0px;
+            max-width: 100px;
+        }
+    }
+    &__title {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 2px;
+        color: $dark-brown;
+        text-transform: uppercase;
+    }
+    &__par {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: $brown;
+        @include breakpoint(sd) {
+            font-size: 8px;
+            line-height: 12px;
+        }
+    }
+}
+
+// 5. Pocess Section
+
+.process {
+    &__container {
+        max-width: 1200px;
+        margin: 0px auto;
+        text-align: center;
+        padding-top: 100px;
+        padding-bottom: 100px;
+        @include breakpoint(sd) {
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+    }
+    &__title {
+        padding-bottom: 40px;
+        @include breakpoint(sd) {
+            padding-bottom: 10px;
+        }
+        &_sub {
+            text-transform: uppercase;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: 2px;
+            color: $brown;
+            @include breakpoint(sd) {
+                line-height: 5px;
+            }
+        }
+        &_main {
+            font-weight: 400;
+            font-size: 39px;
+            line-height: 42px;
+            color: $black;
+            @include breakpoint(sd) {
+                font-size: 23px;
+            }
+        }
+    } 
+}
+
+.action {
+    &__container {
+        display: flex;
+        @include breakpoint(sd) {
+            flex-direction: column;
+        }
+    }
+    &__item {
+        flex: 1 1 33.333%;
+        padding: 0px 51px;
+        text-align: center;
+    }
+    &__pic {
+        @include breakpoint(sd) {
+            width: 70px;
+        }
+    }
+    &__title {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 26px;
+        color: $dark-brown;
+        @include breakpoint(sd) {
+            line-height: 18px;
+        }
+    }
+    &__text {
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 24px;
+        color: $brown;
+        @include breakpoint(sd) {
+            line-height: 16px;
+            font-size: 12px;
+        }
+    }
+}
+
+// 6. Staircase Section
+
+.staircase {
+    background-image: url(../img/staircase.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    @include breakpoint(sd) {
+        background-size: 100%;
+    }
+}
+
+// 7. Client Section
+
+.client {
+    background-color: $dark-brown;
+    &__container {
+        max-width: 1168px;
+        margin: 0px auto;
+        padding: 80px 0px 80px 40px;
+        @include breakpoint(sd) {
+            padding: 25px 0px 25px 10px;
+        }
+    }
+    &__body {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include breakpoint(sd) {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+    &__text {
+        max-width: 451px;
+        @include breakpoint(sd) {
+            padding: 40px;
+        }
+    }
+    &__name {
+        padding: 40px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        @include breakpoint(sd) {
+            padding-top: 0px;
+        }
+    }
+    &__exl {
+        flex: 1 1 50%;
+        margin-bottom: 96px;
+        &_last {
+            margin-bottom: 0px;
+        }
+    }
+    &__pic {
+        max-width: 128px;
+        @include breakpoint(sd) {
+            max-width: 90px;
+        }
+    }
+    &__header-sub {
+        margin: 0px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 2px;
+        color: $pink;
+        text-transform: uppercase;
+        @include breakpoint(sd) {
+            font-size: 12px;
+            line-height: 10px;
+        }
+    }
+    &__header-main {
+        margin-top: 0px;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 38px;
+        color: $white;
+        @include breakpoint(sd) {
+            line-height: 23px;
+            font-size: 16px;
+        }
+    }
+    &__par {
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 24px;
+        color: $pink;
+        @include breakpoint(sd) {
+            line-height: 18px;
+            font-size: 12px;
+        }
+    }
+}
+
+// 8. Swirling Section
+
+.swirling {
+    background-image: url(../img/swirling.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    @include breakpoint(sd) {
+        background-size: 100%;
+    }
+    &__container {
+        margin: 0px auto;
+        max-width: 1280px;
+        padding: 266px 60px;
+        @include breakpoint(sd) {
+            padding: 25px 20px;
+        }
+    }
+    &__title {
+        margin-bottom: 10px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 2px;
+        color: $dark-brown;
+        text-transform: uppercase;
+        @include breakpoint(sd) {
+            font-size: 12px;
+            margin: 0px;
+        }
+    }
+    &__par {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: $brown;
+        @include breakpoint(sd) {
+            font-size: 8px;
+            line-height: 12px;
+        }
+    }
+}
+
+// 9. Project Section
+
+.project {
+    background-color: $grey;
+    &__container {
+        max-width: 1200px;
+        margin: 0px auto;
+        padding: 112px 100px;
+        @include breakpoint(sd) {
+            padding: 50px 20px;
+            text-align: center;
+        }
+    }
+    &__text {
+        padding: 0px 0px 40px 0px;
+        @include breakpoint(sd) {
+            margin: 0px auto;
+            max-width: 500px;
+        }
+    }
+    &__title {
+        font-weight: 400;
+        font-size: 39px;
+        line-height: 42px;
+        margin: 0px;
+        color: $black;
+        @include breakpoint(sd) {
+            font-size: 24px;
+            line-height: 12px;
+        }
+    }
+    &__par {
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 30px;
+        color: $brown;
+        margin-bottom: 0px;
+        @include breakpoint(sd) {
+            font-size: 16px;
+            line-height: 18px;
+        }
+    }
+    &__link {
+        margin: 40px auto 0px;
+        padding: 10px 20px;
+        width: 140px;
+        @include breakpoint(sd) {
+            margin: 5px auto 10px;
+            padding: 10px 20px 30px;
+        }
+    }
+    &__view {
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.4px;
+        color: $black;
+    }
+}
+
+.card {
+    &__row {
+        display: flex;
+        margin: 0px -9px 0px -9px;
+        @include breakpoint(sd) {
+            flex-direction: column;
+            margin: 0px;
+        }
+    }
+    &__column {
+        padding: 0px 9px;
+        flex: 0 1 33.333%;
+        @include breakpoint(sd) {
+            padding: 15px 50px;     
+        }
+    }
+    &__pic {
+        height: 460px;
+        @include breakpoint(sd) {
+            height: 260px;
+        }
+        &_1 {
+            background-image: url(../img/project/project1.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            @include breakpoint(sd) {
+                align-items: center;
+            }
+        }
+        &_2 {
+            background-image: url(../img/project/project2.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            @include breakpoint(sd) {
+                align-items: center;
+                background-position: center bottom;
+            }
+        }
+        &_3 {background-image: url(../img/project/project3.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            @include breakpoint(sd) {
+                align-items: center;
+            }
+        }
+    }
+}
+
+.pic {
+    .in {
+        &__title {
+            display: none;
+        }
+        &__button {
+            display: none;
+        }
+    }
+    &:hover {
+        .in {
+            &__title {
+                display: block;
+                margin-top: 40px;
+                margin-left: 40px;
+                font-weight: 400;
+                @include breakpoint(sd) {
+                    margin-top: 40px;
+                    margin-left: 0px;
+                }
+                &_1 {
+                    margin-bottom: 0px;
+                    font-size: 14px;
+                    line-height: 20px;
+                    letter-spacing: 2px;
+                    text-transform: uppercase;
+                    color: $brown;
+                }
+                &_2 {
+                    margin-top: 0px;
+                    font-size: 23px;
+                    line-height: 30px;
+                    color: $dark-brown;
+                }
+            }
+            &__button {
+                display: block;
+                margin-left: 40px;
+                margin-bottom: 40px;
+                background-color: $black;
+                max-width: 93px;
+                text-align: center;
+                border-radius: 14px;
+                padding: 10px 20px;
+                transition: all 0.4s ease 0s;
+                cursor: pointer;
+                @include breakpoint(sd) {
+                    margin-bottom: 40px;
+                    margin-left: 0px;
+                    padding: 5px 10px;
+                }
+                &:hover {
+                    background-color: $dark-brown;
+                }
+            }
+            &__link {
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 24px;
+                letter-spacing: 0.4px;
+                text-decoration: none;
+                color: $white;
+                transition: all 0.4s ease 0s;
+                @include breakpoint(sd) {
+                    font-size: 12px;
+                }
+                &:hover {
+                    color: $pink;
+                }
+            }
+        }
+    }
+}
+
+// 10. Team Section
+
+.team {
+    &__container {
+        max-width: 1168px;
+        margin: 0px auto;
+        padding: 100px 80px;
+        display: flex;
+        @include breakpoint(sd) {
+            flex-direction: column;
+            padding: 30px 40px;
+            text-align: justify;
+        }
+    }
+    &__text {
+        flex: 0 1 45%;
+        margin-right: 25px;
+        @include breakpoint(sd) {
+            margin-right: 0px;
+            max-width: 450px;
+            margin: 0px auto;
+        }
+    }
+    &__header {
+        margin-top: 0px;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 38px;
+        color: $dark-brown;
+        @include breakpoint(sd) {
+            text-align: center;
+            font-size: 24px;
+            line-height: 30px;
+        }
+    }
+    &__par {
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 24px;
+        color: $brown;
+        @include breakpoint(sd) {
+            font-size: 12px;
+            line-height: 18px;
+        }
+    }
+    &__button {
+        padding: 10px 20px;
+        @include breakpoint(sd) {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    }
+    &__link {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.4px;
+        text-decoration: none;
+        color: $black;
+    }
+    &__table {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    &__item {
+        flex: 1 1 50%;
+        margin-bottom: 50px;
+        @include breakpoint(sd) {
+            margin-bottom: 10px;
+        }
+        &:last-child {
+            margin-bottom: 0px;
+        }
+    }
+}
+
+// 11. Label Section
+
+.label {
+    background-color: $dark-grey;
+    &__container {
+        max-width: 1168px;
+        padding: 100px 80px;
+        margin: 0px auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include breakpoint(sd) {
+            flex-direction: column;
+            text-align: center;
+            padding: 30px 30px 20px;
+        }
+    }
+    &__title {
+        max-width: 576px;
+    }
+    &__subtitle {
+        margin: 0px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 2px;
+        color: $brown;
+        @include breakpoint(sd) {
+            font-size: 12px;
+            line-height: 26px;
+        }
+    }
+    &__main {
+        margin: 0px;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 42px;
+        color: $black;
+        @include breakpoint(sd) {
+            font-size: 22px;
+            line-height: 22px;
+        }
+    }
+    &__button {
+        padding: 10px 20px;
+        @include breakpoint(sd) {
+            margin-top: 10px;
+        }
+    }
+    &__link {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.4px;
+        color: $black;
+        text-decoration: none;
+        @include breakpoint(sd) {
+            font-size: 14px;
+        }
+    }
+}
+
+// 12. Footer
+
+.footer {
+    background-color: $grey;
+    &__container {
+        max-width: 1168px;
+        padding: 60px 80px;
+        margin: 0px auto;
+        display: flex;
+        justify-content: space-between;
+        @include breakpoint(sd) {
+            flex-direction: column;
+            padding: 30px 20px;
+        }
+    }
+    &__text {
+        @include breakpoint(sd) {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    }
+    &__pic {
+        max-width: 100%;
+    }
+    &__par {
+        margin-bottom: 0px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        color: $brown;
+    }
+}
+.link {
+    display: flex;
+    align-items: flex-end;
+    @include breakpoint(sd) {
+        justify-content: center;
+    }
+    &__item {
+        display: block;
+        margin-left: 20px;
+        &:first-child {
+            margin-left: 0px;
+            margin-right: 5px;
+        }
+    }
+}

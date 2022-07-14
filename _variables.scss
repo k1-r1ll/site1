@@ -1,0 +1,28 @@
+// 1. Fonts
+
+$poppins: 'Poppins', sans-serif;
+
+// 2. Colors
+
+$white: #fff;
+$black: #1b1a1a;
+$pink: #ece7e4;
+$brown: #645c55;
+$dark-brown: #403e3b;
+$grey: #f7f7f7;
+$dark-grey: #cec4bc;
+
+// 3. Resolution
+
+@mixin breakpoint($point) {
+    @if $point == md {
+        @media (min-width: 850px) {
+            @content;
+        }
+    }
+    @if $point == sd {
+        @media (max-width: 849px) {
+            @content;
+        }
+    }
+}
